@@ -1,0 +1,17 @@
+<Project>
+  <PropertyGroup>
+    <PackageReferenceVersion>1.0.0</PackageReferenceVersion>
+    <PackagePrefix>Demo.Pipeline.</PackagePrefix>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PackageId>$(PackagePrefix)$(MSBuildProjectName)</PackageId>
+    <PackageVersion>$(PackageReferenceVersion)</PackageVersion>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    
+    <PackageOutputPath>../localsources</PackageOutputPath>
+   
+    <RestorePackagesPath>../packages/</RestorePackagesPath>
+    <RestoreSources>$(PackageOutputPath);$(RestoreSources);https://api.nuget.org/v3/index.json</RestoreSources>   
+    <LangVersion>Latest</LangVersion>
+  </PropertyGroup>
+</Project>

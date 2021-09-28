@@ -1,0 +1,24 @@
+<Project DefaultTargets="Build;Tests" >
+  <PropertyGroup>
+    <BuildTargets>Restore;Build</BuildTargets>
+  </PropertyGroup>
+ <ItemGroup>
+    <Projects Include="Core/Core.csproj" />
+    <Projects Include="Business/Business.csproj" />
+    <Projects Include="Web/Web.csproj" />
+    <Projects Include="Tests/Tests.csproj" />
+
+    <TestProjects Include="Tests/Tests.csproj" />
+
+  </ItemGroup>
+
+  <Target Name="Build" >
+    <Message Text="Building Projects" />
+    <MSBuild  Projects="@(Projects)" Targets="$(BuildTargets)" />
+  </Target>
+  
+  <Target Name="Tests" DependsOnTargets="Build">
+    <Message Text="Executing Tests" />
+    <MSBuild Projects="@(TestProjects)" Targets="$(BuildTargets);VSTest" />
+  </Target>
+</Project>
