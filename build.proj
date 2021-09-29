@@ -1,6 +1,7 @@
-<Project DefaultTargets="Build;Tests" >
+<Project DefaultTargets="Clean;Build" >
   <PropertyGroup>
     <BuildTargets>Restore;Build</BuildTargets>
+    <PackagePrefix>Demo.Pipeline.</PackagePrefix>
   </PropertyGroup>
  <ItemGroup>
     <Projects Include="Core/Core.csproj" />
@@ -10,14 +11,22 @@
 
     <TestProjects Include="Tests/Tests.csproj" />
 
+    <Directories Include="./packages/$(PackagePrefix)Core" />
+    <Directories Include="./packages/$(PackagePrefix)Business" />
   </ItemGroup>
+
+ <Target Name="Clean" >
+   <Message Importance="high" Text="@(Directories)" />
+    <RemoveDir Directories="@(Directories)" />
+    <RemoveDir Directories="./localsources" />
+ </Target>
 
   <Target Name="Build" >
     <Message Text="Building Projects" />
     <MSBuild  Projects="@(Projects)" Targets="$(BuildTargets)" />
   </Target>
   
-  <Target Name="Tests" DependsOnTargets="Build">
+  <Target Name="VSTest">
     <Message Text="Executing Tests" />
     <MSBuild Projects="@(TestProjects)" Targets="$(BuildTargets);VSTest" />
   </Target>

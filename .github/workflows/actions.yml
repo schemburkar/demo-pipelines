@@ -15,5 +15,7 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
-    - name: Build Project & Run Tests
+    - name: Build Project
       run: dotnet build --verbosity minimal
+    - name: Test Project
+      run: dotnet test --no-build --verbosity normal
