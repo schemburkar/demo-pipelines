@@ -16,7 +16,10 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Build Project
-      run: dotnet build --verbosity minimal
+      run: |
+        echo ##[group]My Group
+        dotnet build --verbosity minimal
+        echo ##[endgroup]
     - name: Test Project
       run: |
         echo "::group::my title"   
