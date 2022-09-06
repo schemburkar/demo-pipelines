@@ -5,8 +5,8 @@ runs:
   steps:
     - name: Logs
       run: |
-        echo ##[group]My Group
+        echo "::group::My Group" 
         echo Hello World
-        echo ##[endgroup]
+        echo "::endgroup::"  
       shell: bash
   
