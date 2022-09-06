@@ -8,21 +8,22 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
-    - name: Build Project
+    - uses: ./.github/composite-demo
+    - name: Build and Test Project
       run: |
-        echo ##[group]My Group
+        echo "::group::Build Project"   
         dotnet build --verbosity minimal
-        echo ##[endgroup]
-    - name: Test Project
-      run: |
-        echo "::group::my title"   
+        echo "::endgroup::"
+        
+        echo "::group::Test Project"   
         dotnet test --no-build --verbosity normal
         echo "::endgroup::"
+        
         
