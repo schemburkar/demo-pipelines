@@ -1,8 +1,5 @@
 name: 'Demo Action'
-description: 'Demo composite Action to show formatting and grouping'
-
-outputs:
- 
+description: 'Demo composite Action to show formatting and grouping' 
 runs:
   using: "composite"
   steps:
