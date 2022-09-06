@@ -2,7 +2,7 @@ name: .NET
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, actions_test]
   pull_request:
     branches: [ main ]
 
@@ -18,4 +18,8 @@ jobs:
     - name: Build Project
       run: dotnet build --verbosity minimal
     - name: Test Project
-      run: dotnet test --no-build --verbosity normal
+      run: |
+        echo "::group::my title"   
+        dotnet test --no-build --verbosity normal
+        echo "::endgroup::"
+        
