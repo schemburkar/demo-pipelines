@@ -1,0 +1,15 @@
+name: 'Demo Action'
+description: 'Demo composite Action to show formatting and grouping'
+
+outputs:
+ 
+runs:
+  using: "composite"
+  steps:
+    - name: Logs
+      run: |
+        echo ##[group]My Group
+        echo Hello World
+        echo ##[endgroup]
+      shell: bash
+  
