@@ -3,10 +3,16 @@ description: 'Demo composite Action to show formatting and grouping'
 runs:
   using: "composite"
   steps:
-    - name: Logs
+    - name: Logs 1
       run: |
         echo "::group::My Group" 
         echo Hello World
         echo "::endgroup::"  
+      shell: bash
+    - name: Logs 2
+      run: |
+        echo ##[group]My Group 
+        echo Hello World
+        echo ##[endgroup]  
       shell: bash
   
