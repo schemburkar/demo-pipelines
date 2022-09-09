@@ -25,5 +25,23 @@ jobs:
         echo "::group::Test Project"   
         dotnet test --no-build --verbosity normal
         echo "::endgroup::"
+  build2:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    - uses: ./.github/composite-demo
+    - name: Build and Test Project
+      run: |
+        echo "::group::Build Project"   
+        dotnet build --verbosity minimal
+        echo "::endgroup::"
+        
+        echo "::group::Test Project"   
+        dotnet test --no-build --verbosity normal
+        echo "::endgroup::"
         
         
